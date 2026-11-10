@@ -1,6 +1,3 @@
-# Deploy das três aplicações do grupo 15 na VM da Nuvem do LSD.
-# As portas publicadas na VM (8001, 8002, 8003) são as mesmas da atividade
-# anterior, então os pools do balanceador poi-atividades continuam válidos.
 
 services:
   cpu-service:

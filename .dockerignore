@@ -1,4 +1,3 @@
-# Pastas que não devem entrar na imagem
 venv/
 .venv/
 .git/
@@ -8,7 +7,6 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 
-# Material da atividade anterior, irrelevante em produção
 experiments/
 tests/
 scripts/
