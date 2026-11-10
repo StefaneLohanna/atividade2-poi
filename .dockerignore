@@ -1,0 +1,16 @@
+# Pastas que não devem entrar na imagem
+venv/
+.venv/
+.git/
+.data/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Material da atividade anterior, irrelevante em produção
+experiments/
+tests/
+scripts/
+*.log
+requirements-experiments.txt

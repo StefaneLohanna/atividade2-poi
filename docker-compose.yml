@@ -1,0 +1,35 @@
+# Deploy das três aplicações do grupo 15 na VM da Nuvem do LSD.
+# As portas publicadas na VM (8001, 8002, 8003) são as mesmas da atividade
+# anterior, então os pools do balanceador poi-atividades continuam válidos.
+
+services:
+  cpu-service:
+    image: stefaneguedes/poi-cpu-service:1.0.0
+    container_name: poi-cpu-service
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+
+  memory-service:
+    image: stefaneguedes/poi-memory-service:1.0.0
+    container_name: poi-memory-service
+    restart: unless-stopped
+    ports:
+      - "8002:8002"
+    environment:
+      # A VM tem 2 GB de RAM no total. Limitamos o working set do serviço a
+      # 1 GB para que um pedido grande não derrube a máquina inteira.
+      MEMORY_MAX_MB: "1024"
+
+  io-service:
+    image: stefaneguedes/poi-io-service:1.0.0
+    container_name: poi-io-service
+    restart: unless-stopped
+    ports:
+      - "8003:8003"
+    environment:
+      IO_DATA_DIR: /data
+    volumes:
+      # Volume de 1 GB da Nuvem, montado na VM em /mnt/poi-data.
+      # Os documentos gravados pelo serviço sobrevivem ao container.
+      - /mnt/poi-data/io-data:/data
