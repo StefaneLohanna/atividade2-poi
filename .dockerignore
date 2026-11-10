@@ -1,0 +1,14 @@
+venv/
+.venv/
+.git/
+.data/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+experiments/
+tests/
+scripts/
+*.log
+requirements-experiments.txt

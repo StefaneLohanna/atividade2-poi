@@ -1,0 +1,28 @@
+
+services:
+  cpu-service:
+    image: stefaneguedes/poi-cpu-service:1.0.0
+    container_name: poi-cpu-service
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+
+  memory-service:
+    image: stefaneguedes/poi-memory-service:1.0.0
+    container_name: poi-memory-service
+    restart: unless-stopped
+    ports:
+      - "8002:8002"
+    environment:
+      MEMORY_MAX_MB: "1024"
+
+  io-service:
+    image: stefaneguedes/poi-io-service:1.0.0
+    container_name: poi-io-service
+    restart: unless-stopped
+    ports:
+      - "8003:8003"
+    environment:
+      IO_DATA_DIR: /data
+    volumes:
+      - /mnt/poi-data/io-data:/data
